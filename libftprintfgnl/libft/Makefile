@@ -6,19 +6,21 @@
 #    By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 11:16:18 by pdosso-d          #+#    #+#              #
-#    Updated: 2023/02/16 15:21:20 by pdosso-d         ###   ########.fr        #
+#    Updated: 2023/02/20 18:12:33 by pdosso-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
+		ft_freetab.c\
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \
 		ft_isdigit.c \
 		ft_isprint.c \
 		ft_itoa.c \
+		ft_long_atoi.c \
 		ft_memchr.c \
 		ft_memcmp.c \
 		ft_memcpy.c \

@@ -6,11 +6,30 @@
 /*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:05:15 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/02/16 16:17:23 by pdosso-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:42:41 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sort(t_data *data)
+{
+	t_stack	*nb_a;
+	int		value;
+
+	value = min_value(data->stack_a);
+	if (data->stack_b || !data->stack_a)
+		return (1);
+	nb_a = data->stack_a;
+	while (nb_a)
+	{
+		if (nb_a->value < value)
+			return (1);
+		value = nb_a->value;
+		nb_a = nb_a->next;
+	}
+	return (0);
+}
 
 int	best_a(t_data *data, int value)
 {

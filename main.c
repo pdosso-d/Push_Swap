@@ -6,7 +6,7 @@
 /*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:26:04 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/02/16 15:42:12 by pdosso-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:25:32 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 
 void	make_sort(t_data *data)
 {
-	sort_median(data);
-	sort_stack(data);
+	if (data->len == 4)
+	{
+		pb(data);
+		sort_three_numbers(data);
+		sort_stack(data);
+	}
+	else if (data->len < 3)
+	{
+		if (data->len == 2 && data->stack_a->value > data->stack_a->next->value)
+			ra(data);
+	}
+	else
+	{
+		sort_median(data);
+		sort_stack(data);
+	}
 }
 
 int	main(int argc, char **argv)

@@ -5,39 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 15:25:47 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/02/16 15:27:22 by pdosso-d         ###   ########.fr       */
+/*   Created: 2023/02/20 19:42:53 by pdosso-d          #+#    #+#             */
+/*   Updated: 2023/02/20 19:55:17 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_back_nb(t_stack *stack, t_stack *new)
+int	check_numbers(char **argv)
 {
-	t_stack	*nb;
+	int	i;
+	int	j;
 
-	nb = stack;
-	if (!stack)
+	i = -1;
+	j = 0;
+	while (argv[++j])
 	{
-		nb = new;
-		return ;
+		if (argv[j][0] == '-' || argv[j][0] == '+')
+			i++;
+		while (argv[j][++i])
+		{
+			if (argv[j][i] < '0' || argv[j][i] > '9')
+				return (1);
+		}
+		if (ft_long_atoi(argv[j]) > 2147483647
+			|| ft_long_atoi(argv[j]) < -2147483648)
+			return (1);
+		i = -1;
 	}
-	while (nb->next)
-		nb = nb->next;
-	nb->next = new;
-	new->next = NULL;
-}
-
-t_stack	*new_nb(int value)
-{
-	t_stack	*nb;
-
-	nb = malloc(sizeof(t_stack));
-	if (!nb)
-		return (NULL);
-	nb->value = value;
-	nb->next = NULL;
-	return (nb);
+	return (0);
 }
 
 int	check_nb(t_stack *stack, int check_value, t_data *data)
@@ -79,6 +75,8 @@ int	make_stack(t_data *data, char **argv)
 	t_stack	*nb;
 
 	i = 0;
+	if (check_numbers(argv) > 0)
+		return (ft_printf("Please Int Numbers"));
 	data->stack_a = new_nb(ft_atoi(argv[++i]));
 	if (!data->stack_a)
 		return (ft_printf("Error of Alloc"));
@@ -90,6 +88,9 @@ int	make_stack(t_data *data, char **argv)
 		add_back_nb(data->stack_a, nb);
 	}
 	if (check_double(data) == 1)
+	{
+		free_stacks(data);
 		return (ft_printf("Duplicate Detected"));
+	}
 	return (0);
 }

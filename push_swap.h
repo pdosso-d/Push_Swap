@@ -6,7 +6,7 @@
 /*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:04:07 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/02/16 16:23:20 by pdosso-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:19:52 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		min_pos(t_stack *stack);
 void	free_stacks(t_data *data);
 t_stack	*new_nb(int value);
 void	add_back_nb(t_stack *stack, t_stack *new);
+int		is_sort(t_data *data);
+void	sort_three_numbers(t_data *data);
 void	sa(t_data *data);
 void	sb(t_data *data);
 void	pa(t_data *data);
